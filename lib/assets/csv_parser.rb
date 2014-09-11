@@ -20,14 +20,11 @@ class CsvParser
   end
 
   def write_to_seeds
-    IO.write('../../db/seeds.rb', @data, calculate_offset)
+    IO.write('db/seeds.rb', @data, calculate_offset)
   end
 
   def calculate_offset
     #necessary so if parsing multiple csvs the previous data is not overwritten.
-    File.open('../../db/seeds.rb').size
+    File.open('db/seeds.rb').size
   end
 end
-
-#running this file will make the seed file.
-CsvParser.new('Animals.csv')
